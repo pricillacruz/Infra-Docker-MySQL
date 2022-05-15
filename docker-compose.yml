@@ -12,17 +12,17 @@ services:
     image: mysql:8.0
     restart: always
     networks:
-      - petclinic
+      - aulaDockerPri
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=petclinic
+      - MYSQL_ROOT_PASSWORD=testePri
+      - MYSQL_DATABASE=aulaDockerPri
       - MYSQL_TCP_PORT=3306
 
   app:
     build: .
     restart: always
     networks:
-      - petclinic
+      - aulaDockerPri
     ports:
       - 8080:8080
     volumes:

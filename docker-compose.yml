@@ -1,31 +1,14 @@
 version: '3'
 
-networks:
-  petclinic:
-    driver: bridge
-
-volumes:
-  myapp:
-
 services:
   mysqldb:
     image: mysql:8.0
-    restart: always
-    networks:
-      - aulaDockerPri
-    environment:
-      - MYSQL_ROOT_PASSWORD=testePri
-      - MYSQL_DATABASE=aulaDockerPri
-      - MYSQL_TCP_PORT=3306
-
-  app:
-    build: .
-    restart: always
-    networks:
-      - aulaDockerPri
+    container_name: db_mysql_pri
     ports:
-      - 8080:8080
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=teste
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_USER='root'
     volumes:
-      - myapp:/home
-    depends_on:
-      - mysqldb
+      - ./data:/var/lib/mysql
